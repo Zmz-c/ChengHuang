@@ -1,0 +1,95 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>招聘信息</title>
+  <script src="https://www.layuicdn.com/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.js"></script>
+  <script crossorigin="anonymous" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha512-P+U5OY6oUfmfXUqI9x5V18WdC5ujPMTOZJHC/BZ9nE+rihTUIZnjP1dveK6x3KTVocEW+9xEasqXXjOPciyupg==" src="https://lib.baomitu.com/echarts/5.2.0/theme/vintage.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>地府招聘信息</legend>
+</fieldset>
+<div class="layui-btn-group">
+  <button type="button" class="layui-btn layui-btn-sm" onclick="jobadd()"><i class="bi bi-plus-circle"></i></button>
+  <button type="button" class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+  <button type="button" class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+  <button type="button" class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+</div>
+<tr th:each="li:${list}">
+  <div class="layui-bg-gray" style="padding: 30px;">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md6">
+        <div class="layui-panel">
+          <div style="padding: 50px 30px;">
+            职位:<p th:text="${li.getJob()}"></p>
+            要求:<p th:text="${li.getRequirement()}"></p>
+            薪资:<p th:text="${li.getSalary()}"></p>
+            联系方式:<p th:text="${li.getTelephone()}"></p>
+          </div>
+        </div>
+      </div>
+      <div class="layui-col-md6">
+        <div class="layui-panel">
+          <div style="padding: 50px 30px;">
+            职位:<p th:text="${li.getJob()}"></p>
+            要求:<p th:text="${li.getRequirement()}"></p>
+            薪资:<p th:text="${li.getSalary()}"></p>
+            联系方式:<p th:text="${li.getTelephone()}"></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</tr>
+
+<script>
+  function jobadd(){
+    layer.open({
+      type: 1,
+      skin: 'layui-layer-rim', //加上边框
+      area: ['600px', '300px'], //宽高
+      title:"添加招聘信息",
+      shadeClose: true,
+      content: '<form class="layui-form" action="addzw">\n' +
+              '  <div class="layui-form-item">\n' +
+              '    <label class="layui-form-label">职位</label>\n' +
+              '    <div class="layui-input-block">\n' +
+              '      <input type="text" name="job1" required  lay-verify="required" placeholder="请输入职位" autocomplete="off" class="layui-input">\n' +
+              '    </div>\n' +
+              '  </div>' +
+
+              '<div class="layui-form-item">\n' +
+                '    <label class="layui-form-label">要求</label>\n' +
+                '    <div class="layui-input-block">\n' +
+                  '      <input type="text" name="requirement" required  lay-verify="required" placeholder="请输入要求" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                '  </div>' +
+
+              '<div class="layui-form-item">\n' +
+              '    <label class="layui-form-label">薪资</label>\n' +
+              '    <div class="layui-input-block">\n' +
+              '      <input type="text" name="salary" required  lay-verify="required" placeholder="请输入薪资" autocomplete="off" class="layui-input">\n' +
+              '    </div>\n' +
+              '  </div>' +
+
+              '<div class="layui-form-item">\n' +
+              '    <label class="layui-form-label">联系方式</label>\n' +
+              '    <div class="layui-input-block">\n' +
+              '      <input type="text" name="Telephone" required  lay-verify="required" placeholder="请输入联系方式" autocomplete="off" class="layui-input">\n' +
+              '    </div>\n' +
+              '  </div>' +
+              '<div className="layui-form-item">\n'+
+                 '<div className="layui-input-block">\n'+
+                   '<button className="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>\n'+
+                '</div>\n'+
+              '</div>\n'+
+              '</form>'
+    });
+  }
+</script>
+</body>
+</html>

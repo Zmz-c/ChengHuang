@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlh.CH.dao.logdao">
+    <select id="login" resultType="logtab">
+        select * from login_table where username=${"username"} and password=${"password"}
+    </select>
+
+    <select id="userInfo" resultType="com.zlh.CH.entity.logtab">
+        select * from login_table where username like '%${username}%'
+    </select>
+
+    <insert  id="save">
+        insert into login_table values (${"user"},${"password"})
+    </insert>
+
+</mapper>

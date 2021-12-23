@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlh.CH.dao.jobDao">
+    <select id="findAll" resultType="jobClass">
+        select * from job
+    </select>
+    <select id="findById" resultType="jobClass">
+        select * from job where id=${id}
+    </select>
+
+    <insert id="add" parameterType="integer">
+        insert into job(job,requirement,Telephone,salary) values (${job},${requirement},${Telephone},${salary})
+    </insert>
+
+</mapper>
